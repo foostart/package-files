@@ -1,6 +1,6 @@
 <?php
 
-namespace Foostart\Sample\Controlers\Admin;
+namespace Foostart\Files\Controlers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use URL,
     Route,
     Redirect;
-use Foostart\Sample\Models\Samples;
+use Foostart\Files\Models\Files;
 
-class SampleFrontController extends Controller
+class FileFrontController extends Controller
 {
     public $data = array();
     public function __construct() {
@@ -20,13 +20,13 @@ class SampleFrontController extends Controller
     public function index(Request $request)
     {
 
-        $obj_sample = new Samples();
-        $samples = $obj_sample->get_samples();
+        $obj_file = new Files();
+        $files = $obj_file->get_files();
         $this->data = array(
             'request' => $request,
-            'samples' => $samples
+            'files' => $files
         );
-        return view('sample::sample.index', $this->data);
+        return view('file::file.index', $this->data);
     }
 
 }

@@ -5,9 +5,9 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * FRONT
  */
-Route::get('sample', [
-    'as' => 'sample',
-    'uses' => 'Foostart\Sample\Controllers\Front\SampleFrontController@index'
+Route::get('files', [
+    'as' => 'files',
+    'uses' => 'Foostart\Files\Controllers\Front\FileFrontController@index'
 ]);
 
 
@@ -18,80 +18,64 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['admin_logged', 'can_see']], function () {
 
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////SAMPLES ROUTE///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
-        /**
-         * list
-         */
-        Route::get('/admin/sample', [
-            'as' => 'admin_sample',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@index'
+     
+        Route::get('/admin/files', [
+            'as' => 'admin_files',
+            'uses' => 'Foostart\Files\Controllers\Admin\FileAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/sample/edit', [
-            'as' => 'admin_sample.edit',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@edit'
+        Route::get('admin/files/edit', [
+            'as' => 'admin_files.edit',
+            'uses' => 'Foostart\Files\Controllers\Admin\FileAdminController@edit'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/sample/edit', [
-            'as' => 'admin_sample.post',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@post'
+        Route::post('admin/files/edit', [
+            'as' => 'admin_files.post',
+            'uses' => 'Foostart\Files\Controllers\Admin\FileAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/sample/delete', [
-            'as' => 'admin_sample.delete',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@delete'
+        Route::get('admin/files/delete', [
+            'as' => 'admin_files.delete',
+            'uses' => 'Foostart\Files\Controllers\Admin\FileAdminController@delete'
         ]);
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////SAMPLES ROUTE///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
 
 
-
-
-        
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////CATEGORIES///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
-         Route::get('admin/sample_category', [
-            'as' => 'admin_sample_category',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@index'
+         Route::get('admin/files_category', [
+            'as' => 'admin_files_category',
+            'uses' => 'Foostart\Files\Controllers\Admin\FileCategoryAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/sample_category/edit', [
-            'as' => 'admin_sample_category.edit',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@edit'
+        Route::get('admin/files_category/edit', [
+            'as' => 'admin_files_category.edit',
+            'uses' => 'Foostart\Files\Controllers\Admin\FileCategoryAdminController@edit'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/sample_category/edit', [
-            'as' => 'admin_sample_category.post',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@post'
+        Route::post('admin/files_category/edit', [
+            'as' => 'admin_files_category.post',
+            'uses' => 'Foostart\Files\Controllers\Admin\FileCategoryAdminController@post'
         ]);
          /**
          * delete
          */
-        Route::get('admin/sample_category/delete', [
-            'as' => 'admin_sample_category.delete',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@delete'
+        Route::get('admin/files_category/delete', [
+            'as' => 'admin_files_category.delete',
+            'uses' => 'Foostart\Files\Controllers\Admin\FileCategoryAdminController@delete'
         ]);
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////CATEGORIES///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
+
     });
 });

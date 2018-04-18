@@ -23,20 +23,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `samples_categories`
+-- Table structure for table `files_categories`
 --
 
-DROP TABLE IF EXISTS `samples_categories`;
-CREATE TABLE `samples_categories` (
-  `sample_category_id` int(11) NOT NULL,
-  `sample_category_name` varchar(55) COLLATE utf8_unicode_ci NOT NULL
+DROP TABLE IF EXISTS `files_categories`;
+CREATE TABLE `files_categories` (
+  `file_category_id` int(11) NOT NULL,
+  `file_category_name` varchar(55) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `samples_categories`
+-- Dumping data for table `files_categories`
 --
 
-INSERT INTO `samples_categories` (`sample_category_id`, `sample_category_name`) VALUES
+INSERT INTO `files_categories` (`file_category_id`, `file_category_name`) VALUES
 (1, 'Foo'),
 (2, 'Var'),
 (3, 'List'),
@@ -48,20 +48,20 @@ INSERT INTO `samples_categories` (`sample_category_id`, `sample_category_name`) 
 --
 
 --
--- Indexes for table `samples_categories`
+-- Indexes for table `files_categories`
 --
-ALTER TABLE `samples_categories`
-  ADD PRIMARY KEY (`sample_category_id`);
+ALTER TABLE `files_categories`
+  ADD PRIMARY KEY (`file_category_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `samples_categories`
+-- AUTO_INCREMENT for table `files_categories`
 --
-ALTER TABLE `samples_categories`
-  MODIFY `sample_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `files_categories`
+  MODIFY `file_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
