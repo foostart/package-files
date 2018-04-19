@@ -1,0 +1,25 @@
+<?php namespace Foostart\Files\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller as BaseController;
+use URL;
+use Route,
+    Redirect;
+/**
+ * Validators
+ */
+
+class Controller extends BaseController {
+
+    public $data_view = array();
+
+    private $obj_validator = NULL;
+
+    public function __construct() {
+    }
+
+    public function addFlashMessage($message_key, $message_value) {
+        \Session::flash('message', trans('file::file_admin.message_update_successfully'));
+    }
+
+}
