@@ -5,9 +5,9 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * FRONT
  */
-Route::get('sample', [
-    'as' => 'sample',
-    'uses' => 'Foostart\Sample\Controllers\Front\SampleFrontController@index'
+Route::get('file', [
+    'as' => 'file',
+    'uses' => 'Foostart\File\Controllers\Front\FileFrontController@index'
 ]);
 
 
@@ -16,82 +16,96 @@ Route::get('sample', [
  */
 Route::group(['middleware' => ['web']], function () {
 
-    Route::group(['middleware' => ['admin_logged', 'can_see']], function () {
+    Route::group(['middleware' => ['admin_logged', 'can_see'],
+                  'namespace' => 'Foostart\Files\Controllers\Admin',
+        ], function () {
 
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////SAMPLES ROUTE///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
+        /*
+          |-----------------------------------------------------------------------
+          | Manage file
+          |-----------------------------------------------------------------------
+          | 1. List of files
+          | 2. Edit file
+          | 3. Delete file
+          | 4. Add new file
+          | 5. Manage configurations
+          | 6. Manage languages
+          |
+        */
+
         /**
          * list
          */
-        Route::get('/admin/sample', [
-            'as' => 'admin_sample',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@index'
+        Route::get('admin/files/list', [
+            'as' => 'files.list',
+            'uses' => 'FileAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/sample/edit', [
-            'as' => 'admin_sample.edit',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@edit'
+        Route::get('admin/files/edit', [
+            'as' => 'files.edit',
+            'uses' => 'FileAdminController@edit'
+        ]);
+
+        /**
+         * copy
+         */
+        Route::get('admin/files/copy', [
+            'as' => 'files.copy',
+            'uses' => 'FileAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/sample/edit', [
-            'as' => 'admin_sample.post',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@post'
+        Route::post('admin/files/edit', [
+            'as' => 'files.post',
+            'uses' => 'FileAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/sample/delete', [
-            'as' => 'admin_sample.delete',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleAdminController@delete'
-        ]);
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////SAMPLES ROUTE///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
-
-
-
-
-        
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////CATEGORIES///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
-         Route::get('admin/sample_category', [
-            'as' => 'admin_sample_category',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@index'
+        Route::get('admin/files/delete', [
+            'as' => 'files.delete',
+            'uses' => 'FileAdminController@delete'
         ]);
 
         /**
-         * edit-add
+         * trash
          */
-        Route::get('admin/sample_category/edit', [
-            'as' => 'admin_sample_category.edit',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@edit'
+         Route::get('admin/files/trash', [
+            'as' => 'files.trash',
+            'uses' => 'FileAdminController@trash'
         ]);
 
         /**
-         * post
-         */
-        Route::post('admin/sample_category/edit', [
-            'as' => 'admin_sample_category.post',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@post'
+         * configs
+        */
+        Route::get('admin/files/config', [
+            'as' => 'files.config',
+            'uses' => 'FileAdminController@config'
         ]);
-         /**
-         * delete
-         */
-        Route::get('admin/sample_category/delete', [
-            'as' => 'admin_sample_category.delete',
-            'uses' => 'Foostart\Sample\Controllers\Admin\SampleCategoryAdminController@delete'
+
+        Route::post('admin/files/config', [
+            'as' => 'files.config',
+            'uses' => 'FileAdminController@config'
         ]);
-        ////////////////////////////////////////////////////////////////////////
-        ////////////////////////////CATEGORIES///////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
+
+        /**
+         * language
+        */
+        Route::get('admin/files/lang', [
+            'as' => 'files.lang',
+            'uses' => 'FileAdminController@lang'
+        ]);
+
+        Route::post('admin/files/lang', [
+            'as' => 'files.lang',
+            'uses' => 'FileAdminController@lang'
+        ]);
+
     });
 });
