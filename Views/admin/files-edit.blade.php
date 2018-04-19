@@ -1,7 +1,7 @@
 <!--
 | @TITLE
-| Update existing file
-| Add new file
+| Update existing files
+| Add new files
 |
 |-------------------------------------------------------------------------------
 | @REQUIRED
@@ -65,7 +65,7 @@
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
 
-                            @include('package-file::admin.file-form')
+                            @include('package-files::admin.files-form')
 
                         </div>
                     </div>
@@ -74,7 +74,7 @@
         </div>
 
         <div class='col-md-4'>
-            @include('package-file::admin.file-search')
+            @include('package-files::admin.files-search')
         </div>
 
     </div>

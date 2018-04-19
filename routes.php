@@ -5,9 +5,9 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * FRONT
  */
-Route::get('file', [
-    'as' => 'file',
-    'uses' => 'Foostart\File\Controllers\Front\FileFrontController@index'
+Route::get('files', [
+    'as' => 'files',
+    'uses' => 'Foostart\Files\Controllers\Front\FilesFrontController@index'
 ]);
 
 
@@ -22,12 +22,12 @@ Route::group(['middleware' => ['web']], function () {
 
         /*
           |-----------------------------------------------------------------------
-          | Manage file
+          | Manage files
           |-----------------------------------------------------------------------
           | 1. List of files
-          | 2. Edit file
-          | 3. Delete file
-          | 4. Add new file
+          | 2. Edit files
+          | 3. Delete files
+          | 4. Add new files
           | 5. Manage configurations
           | 6. Manage languages
           |
@@ -38,7 +38,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/files/list', [
             'as' => 'files.list',
-            'uses' => 'FileAdminController@index'
+            'uses' => 'FilesAdminController@index'
         ]);
 
         /**
@@ -46,7 +46,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/files/edit', [
             'as' => 'files.edit',
-            'uses' => 'FileAdminController@edit'
+            'uses' => 'FilesAdminController@edit'
         ]);
 
         /**
@@ -54,7 +54,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/files/copy', [
             'as' => 'files.copy',
-            'uses' => 'FileAdminController@copy'
+            'uses' => 'FilesAdminController@copy'
         ]);
 
         /**
@@ -62,7 +62,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::post('admin/files/edit', [
             'as' => 'files.post',
-            'uses' => 'FileAdminController@post'
+            'uses' => 'FilesAdminController@post'
         ]);
 
         /**
@@ -70,7 +70,7 @@ Route::group(['middleware' => ['web']], function () {
          */
         Route::get('admin/files/delete', [
             'as' => 'files.delete',
-            'uses' => 'FileAdminController@delete'
+            'uses' => 'FilesAdminController@delete'
         ]);
 
         /**
@@ -78,7 +78,7 @@ Route::group(['middleware' => ['web']], function () {
          */
          Route::get('admin/files/trash', [
             'as' => 'files.trash',
-            'uses' => 'FileAdminController@trash'
+            'uses' => 'FilesAdminController@trash'
         ]);
 
         /**
@@ -86,12 +86,12 @@ Route::group(['middleware' => ['web']], function () {
         */
         Route::get('admin/files/config', [
             'as' => 'files.config',
-            'uses' => 'FileAdminController@config'
+            'uses' => 'FilesAdminController@config'
         ]);
 
         Route::post('admin/files/config', [
             'as' => 'files.config',
-            'uses' => 'FileAdminController@config'
+            'uses' => 'FilesAdminController@config'
         ]);
 
         /**
@@ -99,12 +99,12 @@ Route::group(['middleware' => ['web']], function () {
         */
         Route::get('admin/files/lang', [
             'as' => 'files.lang',
-            'uses' => 'FileAdminController@lang'
+            'uses' => 'FilesAdminController@lang'
         ]);
 
         Route::post('admin/files/lang', [
             'as' => 'files.lang',
-            'uses' => 'FileAdminController@lang'
+            'uses' => 'FilesAdminController@lang'
         ]);
 
     });

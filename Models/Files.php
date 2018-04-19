@@ -3,7 +3,7 @@
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends FooModel {
+class Files extends FooModel {
 
     /**
      * @table categories
@@ -24,22 +24,22 @@ class File extends FooModel {
 
         //list of field in table
         $this->fillable = [
-            'file_name',
+            'files_name',
             'category_id',
             'user_id',
             'user_full_name',
             'user_email',
-            'file_overview',
-            'file_description',
-            'file_image',
-            'file_files',
-            'file_status',
+            'files_overview',
+            'files_description',
+            'files_image',
+            'files_files',
+            'files_status',
         ];
 
         //list of fields for inserting
         $this->fields = [
-            'file_name' => [
-                'name' => 'file_name',
+            'files_name' => [
+                'name' => 'files_name',
                 'type' => 'Text',
             ],
             'category_id' => [
@@ -58,19 +58,19 @@ class File extends FooModel {
                 'name' => 'email',
                 'type' => 'Text',
             ],
-            'file_overview' => [
-                'name' => 'file_overview',
+            'files_overview' => [
+                'name' => 'files_overview',
                 'type' => 'Text',
             ],
-            'file_description' => [
-                'name' => 'file_description',
+            'files_description' => [
+                'name' => 'files_description',
                 'type' => 'Text',
             ],
-            'file_image' => [
-                'name' => 'file_image',
+            'files_image' => [
+                'name' => 'files_image',
                 'type' => 'Text',
             ],
-            'file_files' => [
+            'files_files' => [
                 'name' => 'files',
                 'type' => 'Json',
             ],
@@ -78,21 +78,21 @@ class File extends FooModel {
 
         //check valid fields for inserting
         $this->valid_insert_fields = [
-            'file_name',
+            'files_name',
             'user_id',
             'category_id',
             'user_full_name',
             'updated_at',
-            'file_overview',
-            'file_description',
-            'file_image',
-            'file_files',
-            'file_status',
+            'files_overview',
+            'files_description',
+            'files_image',
+            'files_files',
+            'files_status',
         ];
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'file_name',
+            'files_name',
             'updated_at',
             $this->field_status,
         ];
@@ -103,13 +103,13 @@ class File extends FooModel {
         ];
 
         //primary key
-        $this->primaryKey = 'file_id';
+        $this->primaryKey = 'files_id';
 
         //the number of items on page
         $this->perPage = 10;
 
         //item status
-        $this->field_status = 'file_status';
+        $this->field_status = 'files_status';
 
     }
 
@@ -139,9 +139,9 @@ class File extends FooModel {
     }
 
     /**
-     * Get a file by {id}
+     * Get a files by {id}
      * @param ARRAY $params list of parameters
-     * @return OBJECT file
+     * @return OBJECT files
      */
     public function selectItem($params = array(), $key = NULL) {
 
@@ -192,9 +192,9 @@ class File extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'file_name':
+                        case 'files_name':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.file_name', '=', $value);
+                                $elo = $elo->where($this->table . '.files_name', '=', $value);
                             }
                             break;
                         case 'status':
@@ -205,9 +205,9 @@ class File extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.file_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.file_description','LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.file_overview','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.files_name', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.files_description','LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.files_overview','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -233,7 +233,7 @@ class File extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.file_id as id'
+                            $this->table . '.files_id as id'
                 );
 
         return $elo;
@@ -263,20 +263,20 @@ class File extends FooModel {
         }
         $field_status = $this->field_status;
 
-        $file = $this->selectItem($params);
+        $files = $this->selectItem($params);
 
-        if (!empty($file)) {
+        if (!empty($files)) {
             $dataFields = $this->getDataFields($params, $this->fields);
 
             foreach ($dataFields as $key => $value) {
-                $file->$key = $value;
+                $files->$key = $value;
             }
 
-            $file->$field_status = $this->status['publish'];
+            $files->$field_status = $this->status['publish'];
 
-            $file->save();
+            $files->save();
 
-            return $file;
+            return $files;
         } else {
             return NULL;
         }
@@ -286,7 +286,7 @@ class File extends FooModel {
     /**
      *
      * @param ARRAY $params list of parameters
-     * @return OBJECT file
+     * @return OBJECT files
      */
     public function insertItem($params = []) {
 

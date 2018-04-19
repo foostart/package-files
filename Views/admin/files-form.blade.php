@@ -1,5 +1,5 @@
 <!------------------------------------------------------------------------------
-| List of elements in file form
+| List of elements in files form
 |------------------------------------------------------------------------------->
 
 {!! Form::open(['route'=>['files.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
@@ -54,9 +54,9 @@
 
             <!--SAMPLE NAME-->
             @include('package-category::admin.partials.input_text', [
-            'name' => 'file_name',
+            'name' => 'files_name',
             'label' => trans($plang_admin.'.labels.name'),
-            'value' => @$item->file_name,
+            'value' => @$item->files_name,
             'description' => trans($plang_admin.'.descriptions.name'),
             'errors' => $errors,
             ])
@@ -80,9 +80,9 @@
         <div id="menu_2" class="tab-pane fade">
             <!--SAMPLE OVERVIEW-->
             @include('package-category::admin.partials.textarea', [
-            'name' => 'file_overview',
+            'name' => 'files_overview',
             'label' => trans($plang_admin.'.labels.overview'),
-            'value' => @$item->file_overview,
+            'value' => @$item->files_overview,
             'description' => trans($plang_admin.'.descriptions.overview'),
             'tinymce' => false,
             'errors' => $errors,
@@ -91,9 +91,9 @@
 
             <!--SAMPLE DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
-            'name' => 'file_description',
+            'name' => 'files_description',
             'label' => trans($plang_admin.'.labels.description'),
-            'value' => @$item->file_description,
+            'value' => @$item->files_description,
             'description' => trans($plang_admin.'.descriptions.description'),
             'rows' => 50,
             'tinymce' => true,
@@ -106,9 +106,9 @@
         <div id="menu_3" class="tab-pane fade">
             <!--SAMPLE IMAGE-->
             @include('package-category::admin.partials.input_image', [
-            'name' => 'file_image',
+            'name' => 'files_image',
             'label' => trans($plang_admin.'.labels.image'),
-            'value' => @$item->file_image,
+            'value' => @$item->files_image,
             'description' => trans($plang_admin.'.descriptions.image'),
             'errors' => $errors,
             ])
@@ -118,7 +118,7 @@
             @include('package-category::admin.partials.input_files', [
                 'name' => 'files',
                 'label' => trans($plang_admin.'.labels.files'),
-                'value' => @$item->file_files,
+                'value' => @$item->files_files,
                 'description' => trans($plang_admin.'.descriptions.files'),
                 'errors' => $errors,
             ])
@@ -137,5 +137,5 @@
 
 {!! Form::close() !!}
 <!------------------------------------------------------------------------------
-| End list of elements in file form
+| End list of elements in files form
 |------------------------------------------------------------------------------>

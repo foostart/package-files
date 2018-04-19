@@ -69,7 +69,7 @@
 
             <!--SEARCH-->
             <div class="col-md-4">
-                @include('package-file::admin.file-config-backup')
+                @include('package-files::admin.files-config-backup')
             </div>
             <!--/SEARCH-->
 

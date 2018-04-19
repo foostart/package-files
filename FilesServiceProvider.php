@@ -8,7 +8,7 @@ use URL,
     Route;
 use Illuminate\Http\Request;
 
-class FileServiceProvider extends ServiceProvider {
+class FilesServiceProvider extends ServiceProvider {
 
     /**
      * Bootstrap the application services.
@@ -21,7 +21,7 @@ class FileServiceProvider extends ServiceProvider {
 //        $this->generateContextKey();
 
         // load view
-        $this->loadViewsFrom(__DIR__ . '/Views', 'package-file');
+        $this->loadViewsFrom(__DIR__ . '/Views', 'package-files');
 
         // include view composers
         require __DIR__ . "/composers.php";
@@ -51,18 +51,18 @@ class FileServiceProvider extends ServiceProvider {
 
     /**
      * Public config to system
-     * @source: vendor/foostart/package-file/config
+     * @source: vendor/foostart/package-files/config
      * @destination: config/
      */
     protected function publishConfig() {
         $this->publishes([
-            __DIR__ . '/config/package-file.php' => config_path('package-file.php'),
+            __DIR__ . '/config/package-files.php' => config_path('package-files.php'),
                 ], 'config');
     }
 
     /**
      * Public language to system
-     * @source: vendor/foostart/package-file/lang
+     * @source: vendor/foostart/package-files/lang
      * @destination: resources/lang
      */
     protected function publishLang() {
@@ -73,19 +73,19 @@ class FileServiceProvider extends ServiceProvider {
 
     /**
      * Public view to system
-     * @source: vendor/foostart/package-file/Views
-     * @destination: resources/views/vendor/package-file
+     * @source: vendor/foostart/package-files/Views
+     * @destination: resources/views/vendor/package-files
      */
     protected function publishViews() {
 
         $this->publishes([
-            __DIR__ . '/Views' => base_path('resources/views/vendor/package-file'),
+            __DIR__ . '/Views' => base_path('resources/views/vendor/package-files'),
         ]);
     }
 
     protected function publishAssets() {
         $this->publishes([
-            __DIR__ . '/public' => public_path('packages/foostart/package-file'),
+            __DIR__ . '/public' => public_path('packages/foostart/package-files'),
         ]);
     }
 

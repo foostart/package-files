@@ -3,15 +3,15 @@ return [
 
     //Number of worlds
     'length' => [
-        'file_name' => [
+        'files_name' => [
             'min' => 10,
             'max' => 255,
         ],
-        'file_overview' => [
+        'files_overview' => [
             'min' => 10,
             'max' => 255,
         ],
-        'file_description' => [
+        'files_description' => [
             'min' => 255,
             'max' => 0,//unlimit
         ],
@@ -27,7 +27,7 @@ return [
     |
     */
     'env' => 0,
-    'load_from' => 'package-file::',
+    'load_from' => 'package-files::',
 
     /*
     |-----------------------------------------------------------------------

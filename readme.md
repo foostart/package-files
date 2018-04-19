@@ -1,6 +1,6 @@
 @webiste: http://foostart.com
 
-@package-name: sample
+@package-name: files
 @author: Kang
 @date: 27/12/2017
 @version: 2.0

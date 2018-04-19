@@ -31,7 +31,7 @@
             </th>
 
             <!-- NAME -->
-            <?php $name = 'file_name' ?>
+            <?php $name = 'files_name' ?>
 
             <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.name') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
@@ -89,7 +89,7 @@
                 <td> <?php echo $counter; $counter++ ?> </td>
 
                 <!--NAME-->
-                <td> {!! $item->file_name !!} </td>
+                <td> {!! $item->files_name !!} </td>
 
                 <!--UPDATED AT-->
                 <td> {!! $item->updated_at !!} </td>
@@ -153,5 +153,5 @@
 
 @section('footer_scripts')
     @parent
-    {!! HTML::script('packages/foostart/package-file/js/form-table.js')  !!}
+    {!! HTML::script('packages/foostart/package-files/js/form-table.js')  !!}
 @stop

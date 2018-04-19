@@ -1,6 +1,6 @@
 {
     "name": "foostart/package-files",
-    "description": "Manage files",
+    "description": "Create overview files can intergrate other project",
     "keywords": [
         "foostart",
         "laravel 5 package files"

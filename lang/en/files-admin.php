@@ -10,7 +10,7 @@ return [
     |
     */
     'menus' => [
-        'top-menu' => 'Files'
+        'top-menu' => 'Filess'
     ],
 
 
@@ -32,6 +32,7 @@ return [
         'trash' => 'Trash',
         'config' => 'Configurations',
         'lang' => 'Languages',
+        'category' => 'Categories',
     ],
 
 
@@ -47,7 +48,7 @@ return [
     */
     'columns' => [
         'order' => '#',
-        'name' => 'Sample name',
+        'name' => 'Files name',
         'operations' => 'Operations',
         'updated_at' => 'Updated at',
         'filename' => 'File name',
@@ -64,11 +65,11 @@ return [
     'pages' => [
         'title-list' => 'List of files',
         'title-list-search' => 'Search results',
-        'title-edit' => 'Edit file',
-        'title-add' => 'Add new file',
-        'title-delete' => 'Delete file',
+        'title-edit' => 'Edit files',
+        'title-add' => 'Add new files',
+        'title-delete' => 'Delete files',
         'title-config' => 'Current configurations',
-        'title-lang' => 'Manage languages',
+        'title-lang' => 'Manage list of languages',
     ],
 
 
@@ -120,19 +121,15 @@ return [
     | Description
     |
     */
-    'description' => [
-        'form' => 'Sample form',
-        'update' => 'Update file',
-        'name' => '<blockquote class="quote-card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              </p>
-            </blockquote>',
-        'category' => '<blockquote class="quote-card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              </p>
-            </blockquote>',
+    'descriptions' => [
+        'form' => 'Files form',
+        'update' => 'Update files',
+        'name' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'category' => 'Click <a href=":href">here</a> to manage list of categories by token.',
+        'overview' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'image' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        'files' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         'list' => 'List of items',
         'counters' => 'There are <b>:number</b> items',
         'counter' => 'There is <b>:number</b> item',
@@ -154,7 +151,8 @@ return [
     */
     'errors' => [
         'required' => ':attribute is required',
-        'required_length' => 'Allow from: <b>:minlength</b> to <b>:maxlength</b>. characters',
+        'required_length' => '<b> :attribute </b> allows from: <b>:minlength</b> to <b>:maxlength</b> characters.',
+        'required_min_length' =>'<b> :attribute </b> allows from: <b>:minlength</b> characters.',
     ],
 
 
@@ -170,10 +168,10 @@ return [
     |
     */
     'fields' => [
-        'id' => 'Sample ID',
-        'name' => 'Sample name',
-        'description' => 'Description',
-        'overview' => 'Overview',
+        'id' => 'Files ID',
+        'name' => 'Files name',
+        'description' => 'Files Description',
+        'overview' => 'Files Overview',
         'slug' => 'Slug',
         'updated_at' => 'Updated at'
     ],
@@ -191,9 +189,13 @@ return [
     |
     */
     'labels' => [
-        'name' => 'Sample name',
+        'name' => 'Files name',
+        'overview' => 'Files overview',
+        'description' => 'Files description',
+        'image' => 'Files image',
+        'files' => 'Files files',
         'category' => 'Category name',
-        'title-search' => 'Search file',
+        'title-search' => 'Search files',
         'title-backup' => 'Backups',
         'config' => 'Configurations',
     ],
@@ -215,10 +217,17 @@ return [
         'menu_1' => 'Basic',
         'menu_2' => 'Advance',
         'menu_3' => 'Other',
-        'menu_4' => 'Other',
-        'menu_5' => 'Other',
-        'menu_6' => 'Other',
-        'menu_7' => 'Other',
+        'menu_4' => 'Menu 4',
+        'menu_5' => 'Menu 5',
+        'menu_6' => 'Menu 6',
+        'menu_7' => 'Menu 7',
+        'menu_8' => 'Menu 8',
+        'menu_9' => 'Menu 9',
+        'menu_9' => 'Menu 9',
+        'guide'  => 'Guide',
+        'other'  => 'Other',
+        'basic'  => 'Basic',
+        'advance' => 'Advance',
     ],
 
 

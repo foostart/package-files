@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use URL,
     Route,
     Redirect;
-use Foostart\Files\Models\Files;
+use Foostart\Files\Models\Filess;
 
-class FileUserController extends Controller
+class FilesUserController extends Controller
 {
     public $data = array();
     public function __construct() {
@@ -20,13 +20,13 @@ class FileUserController extends Controller
     public function index(Request $request)
     {
 
-        $obj_file = new Files();
-        $files = $obj_file->get_files();
+        $obj_files = new Filess();
+        $files = $obj_files->get_files();
         $this->data = array(
             'request' => $request,
             'files' => $files
         );
-        return view('file::file.index', $this->data);
+        return view('files::files.index', $this->data);
     }
 
 }

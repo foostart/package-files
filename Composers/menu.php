@@ -10,25 +10,25 @@ use Foostart\Category\Helpers\FooCategory;
 |   $sidebar_items
 |   $sorting
 |   $order_by
-|   $plang_admin = 'file-admin'
-|   $plang_front = 'file-front'
+|   $plang_admin = 'files-admin'
+|   $plang_front = 'files-front'
 */
 View::composer([
-                'package-file::admin.file-edit',
-                'package-file::admin.file-form',
-                'package-file::admin.file-items',
-                'package-file::admin.file-item',
-                'package-file::admin.file-search',
-                'package-file::admin.file-config',
-                'package-file::admin.file-lang',
+                'package-files::admin.files-edit',
+                'package-files::admin.files-form',
+                'package-files::admin.files-items',
+                'package-files::admin.files-item',
+                'package-files::admin.files-search',
+                'package-files::admin.files-config',
+                'package-files::admin.files-lang',
     ], function ($view) {
 
         /**
          * $plang-admin
          * $plang-front
          */
-        $plang_admin = 'file-admin';
-        $plang_front = 'file-front';
+        $plang_admin = 'files-admin';
+        $plang_front = 'files-front';
 
         $view->with('plang_admin', $plang_admin);
         $view->with('plang_front', $plang_front);
@@ -39,23 +39,23 @@ View::composer([
          * $sidebar_items
          */
         $view->with('sidebar_items', [
-            trans('file-admin.sidebar.add') => [
+            trans('files-admin.sidebar.add') => [
                 'url' => URL::route('files.edit', []),
                 'icon' => '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
             ],
-            trans('file-admin.sidebar.list') => [
+            trans('files-admin.sidebar.list') => [
                 "url" => URL::route('files.list', []),
                 'icon' => '<i class="fa fa-list-ul" aria-hidden="true"></i>'
             ],
-            trans('file-admin.sidebar.category') => [
+            trans('files-admin.sidebar.category') => [
                 'url'  => URL::route('categories.list',['_key='.$key]),
                 'icon' => '<i class="fa fa-sitemap" aria-hidden="true"></i>'
             ],
-            trans('file-admin.sidebar.config') => [
+            trans('files-admin.sidebar.config') => [
                 "url" => URL::route('files.config', []),
                 'icon' => '<i class="fa fa-braille" aria-hidden="true"></i>'
             ],
-            trans('file-admin.sidebar.lang') => [
+            trans('files-admin.sidebar.lang') => [
                 "url" => URL::route('files.lang', []),
                 'icon' => '<i class="fa fa-language" aria-hidden="true"></i>'
             ],
@@ -68,7 +68,7 @@ View::composer([
         $orders = [
             '' => trans($plang_admin.'.form.no-selected'),
             'id' => trans($plang_admin.'.fields.id'),
-            'file_name' => trans($plang_admin.'.fields.name'),
+            'files_name' => trans($plang_admin.'.fields.name'),
             'updated_at' => trans($plang_admin.'.fields.updated_at'),
         ];
         $sorting = [

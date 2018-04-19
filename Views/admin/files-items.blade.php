@@ -21,6 +21,12 @@
                         </h3>
                     </div>
 
+                    <!--DESCRIPTION-->
+                    <div class='panel-info panel-description'>
+                        {!! trans($plang_admin.'.descriptions.list') !!}</h4>
+                    </div>
+                    <!--/DESCRIPTION-->
+
                     <!--MESSAGE-->
                     <?php $message = Session::get('message'); ?>
                     @if( isset($message) )
@@ -42,7 +48,7 @@
                     <div class="panel-body">
                         {!! Form::open(['route'=>['files.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                            @include('package-file::admin.file-item')
+                            @include('package-files::admin.files-item')
 
                             {!! csrf_field(); !!}
 
@@ -56,7 +62,7 @@
 
             <!--SEARCH-->
             <div class="col-md-4">
-                @include('package-file::admin.file-search')
+                @include('package-files::admin.files-search')
             </div>
             <!--/SEARCH-->
 

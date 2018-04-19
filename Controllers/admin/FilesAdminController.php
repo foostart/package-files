@@ -2,7 +2,7 @@
 
 /*
 |-----------------------------------------------------------------------
-| FileAdminController
+| FilesAdminController
 |-----------------------------------------------------------------------
 | @author: Kang
 | @website: http://foostart.com
@@ -16,12 +16,12 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Files\Models\File;
+use Foostart\Files\Models\Files;
 use Foostart\Category\Models\Category;
-use Foostart\Files\Validators\FileValidator;
+use Foostart\Files\Validators\FilesValidator;
 
 
-class FileAdminController extends FooController {
+class FilesAdminController extends FooController {
 
     public $obj_item = NULL;
     public $obj_category = NULL;
@@ -30,19 +30,19 @@ class FileAdminController extends FooController {
 
         parent::__construct();
         // models
-        $this->obj_item = new File(array('perPage' => 10));
+        $this->obj_item = new Files(array('perPage' => 10));
         $this->obj_category = new Category();
 
         // validators
-        $this->obj_validator = new FileValidator();
+        $this->obj_validator = new FilesValidator();
 
         // set language files
-        $this->plang_admin = 'file-admin';
-        $this->plang_front = 'file-front';
+        $this->plang_admin = 'files-admin';
+        $this->plang_front = 'files-front';
 
         // package name
-        $this->package_name = 'package-file';
-        $this->package_base_name = 'file';
+        $this->package_name = 'package-files';
+        $this->package_base_name = 'files';
 
         // root routers
         $this->root_router = 'files';
@@ -240,8 +240,8 @@ class FileAdminController extends FooController {
     public function config(Request $request) {
         $is_valid_request = $this->isValidRequest($request);
         // display view
-        $config_path = realpath(base_path('config/package-file.php'));
-        $package_path = realpath(base_path('vendor/foostart/package-file'));
+        $config_path = realpath(base_path('config/package-files.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
 
         $config_bakup = realpath($package_path.'/storage/backup/config');
 
@@ -256,7 +256,7 @@ class FileAdminController extends FooController {
         if ($request->isMethod('post') && $is_valid_request) {
 
             //create backup of current config
-            file_put_contents($config_bakup.'/package-file-'.date('YmdHis',time()).'.php', $content);
+            file_put_contents($config_bakup.'/package-files-'.date('YmdHis',time()).'.php', $content);
 
             //update new config
             $content = $request->get('content');
@@ -284,16 +284,16 @@ class FileAdminController extends FooController {
     public function lang(Request $request) {
         $is_valid_request = $this->isValidRequest($request);
         // display view
-        $langs = config('package-file.langs');
+        $langs = config('package-files.langs');
         $lang_paths = [];
 
         if (!empty($langs) && is_array($langs)) {
             foreach ($langs as $key => $value) {
-                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/file-admin.php'));
+                $lang_paths[$key] = realpath(base_path('resources/lang/'.$key.'/files-admin.php'));
             }
         }
 
-        $package_path = realpath(base_path('vendor/foostart/package-file'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
 
         $lang_bakup = realpath($package_path.'/storage/backup/lang');
         $lang = $request->get('lang')?$request->get('lang'):'en';
@@ -322,8 +322,8 @@ class FileAdminController extends FooController {
             foreach ($lang_paths as $key => $value) {
                 $content = file_get_contents($value);
 
-                //format file name file-admin-YmdHis.php
-                file_put_contents($lang_bakup.'/'.$key.'/file-admin-'.date('YmdHis',time()).'.php', $content);
+                //format file name files-admin-YmdHis.php
+                file_put_contents($lang_bakup.'/'.$key.'/files-admin-'.date('YmdHis',time()).'.php', $content);
             }
 
 
