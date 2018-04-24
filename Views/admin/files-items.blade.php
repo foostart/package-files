@@ -72,11 +72,17 @@
 
 
 @section('footer_scripts')
-    <!-- DELETE CONFIRM -->
+    <!-- DELETE CONFIRM --> 
     <script>
-        $(".delete").click(function () {
-            return confirm("{!! trans($plang_admin.'.confirms.delete') !!}");
-        });
+     $(document).ready(function(){
+         $(".ckboxall").click(function(){
+             if ($(this).is(":checked") == true)
+                 $(".btn").show();
+             else
+                 $(".btn").hide();
+                $(".ckbox").click();
+         });
+     });
     </script>
     <!-- /END DELETE CONFIRM -->
 @stop

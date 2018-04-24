@@ -74,6 +74,10 @@ class Files extends FooModel {
                 'name' => 'files',
                 'type' => 'Json',
             ],
+             'files_status' => [
+               'name' => 'files_status',
+               'type' => 'Int',
+            ],
         ];
 
         //check valid fields for inserting
@@ -88,6 +92,7 @@ class Files extends FooModel {
             'files_image',
             'files_files',
             'files_status',
+           
         ];
 
         //check valid fields for ordering
@@ -216,11 +221,7 @@ class Files extends FooModel {
                     }
                 }
             }
-        } elseif ($by_status) {
-
-            $elo = $elo->where($this->table . '.'.$this->field_status, '=', $this->status['publish']);
-
-        }
+        } 
 
         return $elo;
     }
@@ -272,7 +273,7 @@ class Files extends FooModel {
                 $files->$key = $value;
             }
 
-            $files->$field_status = $this->status['publish'];
+//            $files->$field_status = $this->status['publish'];
 
             $files->save();
 
@@ -292,7 +293,7 @@ class Files extends FooModel {
 
         $dataFields = $this->getDataFields($params, $this->fields);
 
-        $dataFields[$this->field_status] = $this->status['publish'];
+//        $dataFields[$this->field_status] = $this->status['publish'];
 
 
         $item = self::create($dataFields);
@@ -327,5 +328,14 @@ class Files extends FooModel {
 
         return FALSE;
     }
-
+/**
+     *
+     * Get list of statuses to push to select
+     * @return ARRAY list of statuses
+     */
+    
+     public function getPluckStatus() {
+            $pluck_status = config('package-files.status.list');
+            return $pluck_status;
+     }
 }

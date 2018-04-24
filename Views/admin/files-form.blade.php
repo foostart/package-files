@@ -62,7 +62,7 @@
             ])
             <!--/SAMPLE NAME-->
 
-            <!-- LIST OF CATEGORIES -->
+           <!-- LIST OF CATEGORIES -->
             @include('package-category::admin.partials.select_single', [
             'name' => 'category_id',
             'label' => trans($plang_admin.'.labels.category'),
@@ -74,6 +74,16 @@
             'errors' => $errors,
             ])
             <!-- /LIST OF CATEGORIES -->
+            
+            
+                <!--STATUS-->
+             @include('package-category::admin.partials.radio', [
+               'name' => 'files_status',
+               'label' => trans($plang_admin.'.labels.files-status'),
+               'value' => @$item->files_status,
+               'description' => trans($plang_admin.'.descriptions.files-status'),
+               'items' => $statuses
+         ])
         </div>
 
         <!--MENU 2-->
