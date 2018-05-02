@@ -22,12 +22,22 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
 
 <table class="table table-hover">
 
-    <thead>
+    <thead> 
         <tr style="height: 50px;">
-
+            
+            <?php $name = 'files_id' ?>
             <!--ORDER-->
-            <th style='width:{{ $withs['order'] }}'>
+            <th style='width:{{ $withs['order'] }}; width:10%'  >
                 {{ trans($plang_admin.'.columns.order') }}
+                <a  href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                    @if($sorting['items'][$name] == 'asc')
+                    <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                    @elseif($sorting['items'][$name] == 'desc')
+                    <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                    @else
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                    @endif
+                </a>
             </th>
 
             <!-- NAME -->
@@ -97,16 +107,14 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
             </th>
 
         </tr>
-
+ 
     </thead>
 
     <tbody>
         @foreach($items as $item)
         <tr>
             <!--COUNTER-->
-            <td> <?php echo $counter;
-            $counter++ ?> </td>
-
+            <td>{!! $item->files_id !!} </td> 
             <!--NAME-->
             <td> {!! $item->files_name !!} </td>
 

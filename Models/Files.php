@@ -24,6 +24,7 @@ class Files extends FooModel {
 
         //list of field in table
         $this->fillable = [
+            'files_id',
             'files_name',
             'category_id',
             'user_id',
@@ -38,6 +39,10 @@ class Files extends FooModel {
 
         //list of fields for inserting
         $this->fields = [
+             'files_id' => [
+                'name' => 'files_name',
+                'type' => 'Int',
+            ],
             'files_name' => [
                 'name' => 'files_name',
                 'type' => 'Text',
@@ -97,6 +102,7 @@ class Files extends FooModel {
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
+            'files_id',
             'files_name',
             'updated_at',
             $this->field_status,
