@@ -39,10 +39,7 @@ class Files extends FooModel {
 
         //list of fields for inserting
         $this->fields = [
-             'files_id' => [
-                'name' => 'files_name',
-                'type' => 'Int',
-            ],
+ 
             'files_name' => [
                 'name' => 'files_name',
                 'type' => 'Text',
