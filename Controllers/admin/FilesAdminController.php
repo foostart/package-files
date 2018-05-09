@@ -54,9 +54,10 @@ class FilesAdminController extends FooController {
                 'edit'  => $this->package_name.'::admin.'.$this->package_base_name.'-edit',
                 'config'  => $this->package_name.'::admin.'.$this->package_base_name.'-config',
                 'lang'  => $this->package_name.'::admin.'.$this->package_base_name.'-lang',
+               
             ]
         ];
-
+          
         $this->data_view['status'] = $this->obj_item->getPluckStatus();
         $this->statuses = config('package-files.status.list');
         $this->statuses;
@@ -81,7 +82,7 @@ class FilesAdminController extends FooController {
             'items' => $items,
             'request' => $request,
             'params' => $params,
-              'statuses' => $this->statuses,
+             'statuses' => $this->statuses,
         ));
 
         return view($this->page_views['admin']['items'], $this->data_view);
@@ -235,17 +236,25 @@ class FilesAdminController extends FooController {
                         ->withMessage(trans($this->plang_admin.'.actions.delete-error'));
     }
 
-    /**
+    
+    
+    
+    
+    
+     /**
      * Manage configuration of package
      * @param Request $request
-     * @return view config page
+     * @return view search page
      */
-    public function config(Request $request) {
+        public function search(Request $request) {
         $is_valid_request = $this->isValidRequest($request);
         // display view
-        $config_path = realpath(base_path('config/package-files.php'));
+     
+        $config_path = realpath(base_path('vendor/foostart/package-files/Views/admin/files-search.blade.php'));
         $package_path = realpath(base_path('vendor/foostart/package-files'));
 
+        
+  
         $config_bakup = realpath($package_path.'/storage/backup/config');
 
         if ($version = $request->get('v')) {
@@ -273,8 +282,349 @@ class FilesAdminController extends FooController {
             'request' => $request,
             'content' => $content,
             'backups' => $backups,
+            
+          
         ));
+  
+        return view($this->page_views['admin']['config'], $this->data_view);
+    }
+    
+    
+    /**
+     * Manage configuration of package
+     * @param Request $request
+     * @return view lags page
+     */
+        public function langs(Request $request) {
+        $is_valid_request = $this->isValidRequest($request);
+        // display view
+     
+        $config_path = realpath(base_path('vendor/foostart/package-files/Views/admin/files-lang.blade.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
 
+        
+  
+        $config_bakup = realpath($package_path.'vendor/foostart/package-files/Views/admin/files-lang.blade.php');
+
+        if ($version = $request->get('v')) {
+            //load backup config
+            $content = file_get_contents(base64_decode($version));
+        } else {
+            //load current config
+            $content = file_get_contents($config_path);
+        }
+
+        if ($request->isMethod('post') && $is_valid_request) {
+
+            //create backup of current config
+            file_put_contents($config_bakup.'/package-files-'.date('YmdHis',time()).'.php', $content);
+
+            //update new config
+            $content = $request->get('content');
+
+            file_put_contents($config_path, $content);
+        }
+
+        $backups = array_reverse(glob($config_bakup.'/*'));
+
+        $this->data_view = array_merge($this->data_view, array(
+            'request' => $request,
+            'content' => $content,
+            'backups' => $backups,
+            
+          
+        ));
+  
+        return view($this->page_views['admin']['config'], $this->data_view);
+    }
+    
+    /**
+     * Manage configuration of package
+     * @param Request $request
+     * @return view items page
+     */
+        public function items(Request $request) {
+        $is_valid_request = $this->isValidRequest($request);
+        // display view
+     
+        $config_path = realpath(base_path('vendor/foostart/package-files/Views/admin/files-items.blade.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
+
+        
+  
+        $config_bakup = realpath($package_path.'/storage/backup/config');
+
+        if ($version = $request->get('v')) {
+            //load backup config
+            $content = file_get_contents(base64_decode($version));
+        } else {
+            //load current config
+            $content = file_get_contents($config_path);
+        }
+
+        if ($request->isMethod('post') && $is_valid_request) {
+
+            //create backup of current config
+            file_put_contents($config_bakup.'/package-files-'.date('YmdHis',time()).'.php', $content);
+
+            //update new config
+            $content = $request->get('content');
+
+            file_put_contents($config_path, $content);
+        }
+
+        $backups = array_reverse(glob($config_bakup.'/*'));
+
+        $this->data_view = array_merge($this->data_view, array(
+            'request' => $request,
+            'content' => $content,
+            'backups' => $backups,
+            
+          
+        ));
+  
+        return view($this->page_views['admin']['config'], $this->data_view);
+    }
+
+    /**
+     * Manage configuration of package
+     * @param Request $request
+     * @return view item page
+     */
+        public function item(Request $request) {
+        $is_valid_request = $this->isValidRequest($request);
+        // display view
+     
+        $config_path = realpath(base_path('vendor/foostart/package-files/Views/admin/files-item.blade.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
+
+        
+  
+        $config_bakup = realpath($package_path.'/storage/backup/config');
+
+        if ($version = $request->get('v')) {
+            //load backup config
+            $content = file_get_contents(base64_decode($version));
+        } else {
+            //load current config
+            $content = file_get_contents($config_path);
+        }
+
+        if ($request->isMethod('post') && $is_valid_request) {
+
+            //create backup of current config
+            file_put_contents($config_bakup.'/package-files-'.date('YmdHis',time()).'.php', $content);
+
+            //update new config
+            $content = $request->get('content');
+
+            file_put_contents($config_path, $content);
+        }
+
+        $backups = array_reverse(glob($config_bakup.'/*'));
+
+        $this->data_view = array_merge($this->data_view, array(
+            'request' => $request,
+            'content' => $content,
+            'backups' => $backups,
+            
+          
+        ));
+  
+        return view($this->page_views['admin']['config'], $this->data_view);
+    }
+
+    
+    
+    
+     /**
+     * Manage configuration of package
+     * @param Request $request
+     * @return view form page
+     */
+        public function forms(Request $request) {
+        $is_valid_request = $this->isValidRequest($request);
+        // display view
+     
+        $config_path = realpath(base_path('vendor/foostart/package-files/Views/admin/files-form.blade.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
+
+        
+  
+        $config_bakup = realpath($package_path.'/storage/backup/config');
+
+        if ($version = $request->get('v')) {
+            //load backup config
+            $content = file_get_contents(base64_decode($version));
+        } else {
+            //load current config
+            $content = file_get_contents($config_path);
+        }
+
+        if ($request->isMethod('post') && $is_valid_request) {
+
+            //create backup of current config
+            file_put_contents($config_bakup.'/package-files-'.date('YmdHis',time()).'.php', $content);
+
+            //update new config
+            $content = $request->get('content');
+
+            file_put_contents($config_path, $content);
+        }
+
+        $backups = array_reverse(glob($config_bakup.'/*'));
+
+        $this->data_view = array_merge($this->data_view, array(
+            'request' => $request,
+            'content' => $content,
+            'backups' => $backups,
+            
+          
+        ));
+  
+        return view($this->page_views['admin']['config'], $this->data_view);
+    }
+
+      /**
+     * Manage configuration of package
+     * @param Request $request
+     * @return view config page
+     */
+        public function configs(Request $request) {
+        $is_valid_request = $this->isValidRequest($request);
+        // display view
+     
+        $config_path = realpath(base_path('vendor/foostart/package-files/Views/admin/files-config.blade.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
+
+        
+  
+        $config_bakup = realpath($package_path.'/storage/backup/config');
+
+        if ($version = $request->get('v')) {
+            //load backup config
+            $content = file_get_contents(base64_decode($version));
+        } else {
+            //load current config
+            $content = file_get_contents($config_path);
+        }
+
+        if ($request->isMethod('post') && $is_valid_request) {
+
+            //create backup of current config
+            file_put_contents($config_bakup.'/package-files-'.date('YmdHis',time()).'.php', $content);
+
+            //update new config
+            $content = $request->get('content');
+
+            file_put_contents($config_path, $content);
+        }
+
+        $backups = array_reverse(glob($config_bakup.'/*'));
+
+        $this->data_view = array_merge($this->data_view, array(
+            'request' => $request,
+            'content' => $content,
+            'backups' => $backups,
+            
+          
+        ));
+  
+        return view($this->page_views['admin']['config'], $this->data_view);
+    }
+
+    
+       
+   public function edits(Request $request) {
+        $is_valid_request = $this->isValidRequest($request);
+        // display view
+     
+        $config_path = realpath(base_path('vendor/foostart/package-files/Views/admin/files-edit.blade.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
+
+        
+  
+        $config_bakup = realpath($package_path.'/storage/backup/config');
+
+        if ($version = $request->get('v')) {
+            //load backup config
+            $content = file_get_contents(base64_decode($version));
+        } else {
+            //load current config
+            $content = file_get_contents($config_path);
+        }
+
+        if ($request->isMethod('post') && $is_valid_request) {
+
+            //create backup of current config
+            file_put_contents($config_bakup.'/package-files-'.date('YmdHis',time()).'.php', $content);
+
+            //update new config
+            $content = $request->get('content');
+
+            file_put_contents($config_path, $content);
+        }
+
+        $backups = array_reverse(glob($config_bakup.'/*'));
+
+        $this->data_view = array_merge($this->data_view, array(
+            'request' => $request,
+            'content' => $content,
+            'backups' => $backups,
+            
+          
+        ));
+  
+        return view($this->page_views['admin']['config'], $this->data_view);
+    }
+
+    
+    /**
+     * Manage configuration of package
+     * @param Request $request
+     * @return view config page
+     */
+    public function config(Request $request) {
+        $is_valid_request = $this->isValidRequest($request);
+        // display view
+       
+     
+        $config_path = realpath(base_path('config/package-files.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
+
+        
+  
+        $config_bakup = realpath($package_path.'/storage/backup/config');
+
+        if ($version = $request->get('v')) {
+            //load backup config
+            $content = file_get_contents(base64_decode($version));
+        } else {
+            //load current config
+            $content = file_get_contents($config_path);
+        }
+
+        if ($request->isMethod('post') && $is_valid_request) {
+
+            //create backup of current config
+            file_put_contents($config_bakup.'/package-files-'.date('YmdHis',time()).'.php', $content);
+
+            //update new config
+            $content = $request->get('content');
+
+            file_put_contents($config_path, $content);
+        }
+
+        $backups = array_reverse(glob($config_bakup.'/*'));
+
+        $this->data_view = array_merge($this->data_view, array(
+            'request' => $request,
+            'content' => $content,
+            'backups' => $backups,
+            
+          
+        ));
+  
         return view($this->page_views['admin']['config'], $this->data_view);
     }
 

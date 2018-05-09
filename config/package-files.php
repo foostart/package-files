@@ -15,6 +15,10 @@ return [
             'min' => 255,
             'max' => 0,//unlimit
         ],
+        'files_description' => [
+            'min' => 255,
+            'max' => 0,//unlimit
+        ],
     ],
     'per_page' => 1,
 

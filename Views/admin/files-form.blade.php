@@ -84,6 +84,14 @@
                'description' => trans($plang_admin.'.descriptions.files-status'),
                'items' => $statuses
          ])
+         
+          @include('package-category::admin.partials.input-settings-files', [
+             
+         ])
+         
+         
+           
+          
         </div>
 
         <!--MENU 2-->

@@ -16,7 +16,7 @@ Route::get('files', [
  */
 Route::group(['middleware' => ['web']], function () {
 
-    Route::group(['middleware' => ['admin_logged', 'can_see'],
+    Route::group(['middleware' => ['admin_logged', 'can_see','in_context'],
                   'namespace' => 'Foostart\Files\Controllers\Admin',
         ], function () {
 
@@ -106,6 +106,97 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'files.lang',
             'uses' => 'FilesAdminController@lang'
         ]);
-
+        
+        
+      /**
+         * configx 
+        */
+        Route::get('admin/files/configs', [
+            'as' => 'files.configs',
+            'uses' => 'FilesAdminController@configs'
+        ]);
+           Route::post('admin/files/configs', [
+            'as' => 'files.configs',
+            'uses' => 'FilesAdminController@configs'
+        ]);
+        
+           
+             /**
+         * edits 
+        */
+        Route::get('admin/files/edits', [
+            'as' => 'files.edits',
+            'uses' => 'FilesAdminController@edits'
+        ]);
+           Route::post('admin/files/edits', [
+            'as' => 'files.edits',
+            'uses' => 'FilesAdminController@edits'
+        ]);
+        
+           
+              /**
+         * forms 
+        */
+        Route::get('admin/files/forms', [
+            'as' => 'files.forms',
+            'uses' => 'FilesAdminController@forms'
+        ]);
+           Route::post('admin/files/edits', [
+            'as' => 'files.edits',
+            'uses' => 'FilesAdminController@forms'
+        ]);
+        
+            /**
+         * item 
+        */
+        Route::get('admin/files/item', [
+            'as' => 'files.item',
+            'uses' => 'FilesAdminController@item'
+        ]);
+           Route::post('admin/files/item', [
+            'as' => 'files.item',
+            'uses' => 'FilesAdminController@item'
+        ]);
+        
+           
+           
+               /**
+         * search 
+        */
+        Route::get('admin/files/search', [
+            'as' => 'files.search',
+            'uses' => 'FilesAdminController@search'
+        ]);
+           Route::post('admin/files/search', [
+            'as' => 'files.search',
+            'uses' => 'FilesAdminController@search'
+        ]);
+           
+               /**
+         * items
+        */
+        Route::get('admin/files/items', [
+            'as' => 'files.items',
+            'uses' => 'FilesAdminController@items'
+        ]);
+           Route::post('admin/files/items', [
+            'as' => 'files.items',
+            'uses' => 'FilesAdminController@items'
+        ]);
+           
+           
+               /**
+         * langs 
+        */
+        Route::get('admin/files/langs', [
+            'as' => 'files.langs',
+            'uses' => 'FilesAdminController@langs'
+        ]);
+           Route::post('admin/files/langs', [
+            'as' => 'files.langs',
+            'uses' => 'FilesAdminController@langs'
+        ]);
+           
+          
     });
 });
