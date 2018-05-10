@@ -58,8 +58,9 @@ class FilesServiceProvider extends ServiceProvider {
         $this->publishes([
             __DIR__ . '/config/package-files.php' => config_path('package-files.php'),
                 ], 'config');
+       
     }
-
+ 
     /**
      * Public language to system
      * @source: vendor/foostart/package-files/lang

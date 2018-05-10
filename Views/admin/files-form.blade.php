@@ -52,6 +52,8 @@
         <!--MENU 1-->
         <div id="menu_1" class="tab-pane fade in active">
 
+            
+            
             <!--SAMPLE NAME-->
             @include('package-category::admin.partials.input_text', [
             'name' => 'files_name',
@@ -62,6 +64,8 @@
             ])
             <!--/SAMPLE NAME-->
 
+            
+            
            <!-- LIST OF CATEGORIES -->
             @include('package-category::admin.partials.select_single', [
             'name' => 'category_id',
@@ -76,20 +80,9 @@
             <!-- /LIST OF CATEGORIES -->
             
             
-                <!--STATUS-->
-             @include('package-category::admin.partials.radio', [
-               'name' => 'files_status',
-               'label' => trans($plang_admin.'.labels.files-status'),
-               'value' => @$item->files_status,
-               'description' => trans($plang_admin.'.descriptions.files-status'),
-               'items' => $statuses
-         ])
+               
          
-          @include('package-category::admin.partials.input-settings-files', [
-             
-         ])
-         
-         
+        
            
           
         </div>

@@ -71,11 +71,14 @@ View::composer([
         'files_name' => trans($plang_admin . '.fields.name'),
         'files_status' => trans($plang_admin . '.fields.files-status'),
         'updated_at' => trans($plang_admin . '.fields.updated_at'),
+                
+        
     ];
     $sorting = [
         'label' => $orders,
         'items' => [],
         'url' => [],
+        
     ];
     //Order by params
     $params = Request::all();

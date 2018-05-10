@@ -2,8 +2,8 @@
 <?php
 $withs = [
     'order' => '5%',
-    'name' => '40%',
-    'updated_at' => '40%',
+    'name' => '0',
+    'updated_at' => '0',
     'operations' => '10%',
     'delete' => '5%',
 ];
@@ -24,7 +24,7 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
 
     <thead> 
         <tr style="height: 50px;">
-            
+
             <?php $name = 'files_id' ?>
             <!--ORDER-->
             <th style='width:{{ $withs['order'] }}; width:10%'  >
@@ -39,11 +39,30 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
                     @endif
                 </a>
             </th>
+            
+           
 
             <!-- NAME -->
             <?php $name = 'files_name' ?>
 
             <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.name') !!}
+                <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
+                    @if($sorting['items'][$name] == 'asc')
+                    <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+                    @elseif($sorting['items'][$name] == 'desc')
+                    <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+                    @else
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                    @endif
+                </a>
+            </th>
+
+
+
+            <!--REF-->
+            <?php $name = 'files_status' ?>
+
+            <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.files-status') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -70,10 +89,10 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
                 </a>
             </th>
 
-            <!--REF-->
-            <?php $name = 'files_status' ?>
+            <!-- NAME -->
+            <?php $name = 'updated_at' ?>
 
-            <th class="hidden-xs" style='width:{{ $withs['name'] }}'>{!! trans($plang_admin.'.columns.files-status') !!}
+            <th class="hidden-xs" style='width:{{ $withs['updated_at'] }}'>{!! trans($plang_admin.'.columns.updated_at') !!}
                 <a href='{!! $sorting["url"][$name] !!}' class='tb-id' data-order='asc'>
                     @if($sorting['items'][$name] == 'asc')
                     <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
@@ -84,9 +103,6 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
                     @endif
                 </a>
             </th>
-
-
-
 
             <!--OPERATIONS-->
             <th style='width:{{ $withs['operations'] }}' >
@@ -107,7 +123,7 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
             </th>
 
         </tr>
- 
+
     </thead>
 
     <tbody>
@@ -122,7 +138,7 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
             <!--STATUS-->
             <td style="text-align: center;">
 
-<?php $status = config('package-files.status'); ?>
+                <?php $status = config('package-files.status'); ?>
                 @if($item->files_status && (isset($status['list'][$item->files_status])))
                 <i class="fa fa-circle" style="color:{!! $status['color'][$item->files_status] !!}" title='{!! $status["list"][$item->files_status] !!}'></i>
                 @else
@@ -136,15 +152,18 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
             <!--OPERATOR-->
             <td>
                 <!--edit-->
-                <a href="{!! URL::route('files.edit', [   'id' => $item->id,
+                <a href="{!! URL::route('files.edit', ['id' => $item->id,
                    '_token' => csrf_token()
                    ])
                    !!}">
-                    <i class="fa fa-edit f-tb-icon"></i>
+                    <i class="fa fa-edit f-tb-icon"></i>        
+                    
                 </a>
-
+                
+                 
+             
                 <!--copy-->
-                <a href="{!! URL::route('files.copy',[    'cid' => $item->id,
+                <a href="{!! URL::route('files.copy',['cid' => $item->id,
                    '_token' => csrf_token(),
                    ])
                    !!}"
