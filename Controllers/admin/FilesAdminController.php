@@ -232,6 +232,7 @@ class FilesAdminController extends FooController {
                         ->withMessage(trans($this->plang_admin . '.actions.delete-error'));
     }
 
+<<<<<<< HEAD
     public function configs(Request $request) {
         $is_valid_request = $this->isValidRequest($request);
         // display view
@@ -243,6 +244,17 @@ class FilesAdminController extends FooController {
        
         $config_bakup = realpath($package_path .'/storage/backup');
       
+=======
+    public function edits(Request $request) {
+        $is_valid_request = $this->isValidRequest($request);
+        // display view
+
+        $config_path = realpath(base_path('vendor/foostart/package-files/Views/admin/files-edit.blade.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-files'));
+       
+        $config_bakup = realpath($package_path .'/storage/bak');
+
+>>>>>>> ff6d4b825bce2a70aa96cbada9dcc3b366372739
         if ($version = $request->get('v')) {
             //load backup config
             $content = file_get_contents(base64_decode($version));
@@ -290,7 +302,11 @@ class FilesAdminController extends FooController {
         
         $package_path = realpath(base_path('vendor/foostart/package-files'));
      
+<<<<<<< HEAD
          var_dump($package_path);
+=======
+ 
+>>>>>>> ff6d4b825bce2a70aa96cbada9dcc3b366372739
         $config_bakup = realpath($package_path . '/storage/backup');
             
         
@@ -324,7 +340,11 @@ class FilesAdminController extends FooController {
 
         return view($this->page_views['admin']['config'], $this->data_view);
     }
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> ff6d4b825bce2a70aa96cbada9dcc3b366372739
     /**
      * Manage languages of package
      * @param Request $request
