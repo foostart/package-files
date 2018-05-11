@@ -132,11 +132,11 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
             <!--COUNTER-->
             <td>{!! $item->files_id !!} </td> 
             <!--NAME-->
-            <td> <a href="{!! URL::route('files.configs', ['name' => $item->files_name,
+            <td> <a href="{!! URL::route('files.config', ['name' => $item->files_name,
                    '_token' => csrf_token()
                    ])
                    !!}"> {!! $item->files_name !!} </a> </td>
-          
+
 
             <!--STATUS-->
             <td style="text-align: center;">
@@ -174,8 +174,6 @@ $counter = ($nav['current_page'] - 1) * $nav['per_page'] + 1;
                     <i class="fa fa-files-o f-tb-icon" aria-hidden="true"></i>
                 </a>
 
-                
-                
                 <!--delete-->
                 <a href="{!! URL::route('files.delete',[  'id' => $item->id,
                    '_token' => csrf_token(),

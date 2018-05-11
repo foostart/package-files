@@ -47,7 +47,7 @@
                     <!--BODY-->
                     <div class="panel-body">
                         {!! Form::open(['route'=>['files.config'], 'method' => 'post'])  !!}
-
+                            
                             <div class='btn-form'>
 
                                 <!-- SAVE BUTTON -->
@@ -55,10 +55,9 @@
                                 <!-- /SAVE BUTTON -->
 
                             </div>
-
                             {!! Form::label('content', trans($plang_admin.'.labels.config')) !!}
                             {!! Form::textarea('content', $content, ['class' => 'form-control textarea-margin', 'size' => '30x50']) !!}
-
+                            {!! Form::input('hidden', $type, 'items') !!}
                             {!! Form::close() !!}
                     </div>
                     <!--/BODY-->

@@ -108,18 +108,7 @@ Route::group(['middleware' => ['web']], function () {
         ]);
         
         
-      /**
-         * configx 
-        */
-        Route::get('admin/files/configs', [
-            'as' => 'files.configs',
-            'uses' => 'FilesAdminController@configs'
-        ]);
-           Route::post('admin/files/configs', [
-            'as' => 'files.configs',
-            'uses' => 'FilesAdminController@configs'
-        ]);
-        
+     
            
           
     });
